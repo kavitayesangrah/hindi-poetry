@@ -31,13 +31,15 @@ function displayTitles() {
 function searchPoems() {
   const query = document.getElementById("search").value.trim();
   displayPoems(null, query);
-}
-
-function displayPoems(filterPoet = null) {
+function displayPoems(filterPoet = null, searchQuery = "") {
   const poems = JSON.parse(localStorage.getItem("hindiPoems")) || [];
   const list = document.getElementById("poemList");
   list.innerHTML = "";
-  const filtered = filterPoet ? poems.filter(p => p.poet === filterPoet) : poems;
+  
+  const filtered = poems.filter(p =>
+    (!filterPoet || p.poet === filterPoet) &&
+    (p.title.includes(searchQuery) || p.poem.includes(searchQuery))
+  );
 
   filtered.forEach(entry => {
     const card = document.createElement("div");
@@ -52,22 +54,3 @@ function displayPoems(filterPoet = null) {
   });
 }
 
-function displayPoets() {
-  const poems = JSON.parse(localStorage.getItem("hindiPoems")) || [];
-  const poetSet = new Set(poems.map(p => p.poet));
-  const poetList = document.getElementById("poetList");
-  poetList.innerHTML = "";
-
-  poetSet.forEach(poet => {
-    const link = document.createElement("span");
-    link.className = "poet-link";
-    link.textContent = poet;
-    link.onclick = () => displayPoems(poet);
-    poetList.appendChild(link);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  displayPoems();
-  displayPoets();
-});
