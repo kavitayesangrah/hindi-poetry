@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>हिंदी कविता संग्रह</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 हिंदी कविता संग्रह</h1>
+    <input type="text" id="poet" placeholder="कवि का नाम लिखें" />
+    <input type="text" id="title" placeholder="कविता का शीर्षक लिखें" />
+    <textarea id="poem" placeholder="यहाँ कविता लिखें..."></textarea>
+    <button onclick="savePoem()">कविता सहेजें</button>
+
+    <input type="text" id="search" placeholder="🔍 कविता खोजें..." />
+
+    <h2>✍️ कवि सूची</h2>
+    <div id="poetList"></div>
+
+    <h2>📝 कविताएँ</h2>
+    <div id="poemList"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
