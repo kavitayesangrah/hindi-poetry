@@ -15,6 +15,23 @@ function savePoem() {
   displayPoems();
   displayPoets();
 }
+function displayTitles() {
+  const poems = JSON.parse(localStorage.getItem("hindiPoems")) || [];
+  const titleList = document.getElementById("titleList");
+  titleList.innerHTML = "";
+
+  poems.forEach(entry => {
+    const link = document.createElement("span");
+    link.className = "title-link";
+    link.textContent = entry.title;
+    link.onclick = () => displayPoems(null, entry.title);
+    titleList.appendChild(link);
+  });
+}
+function searchPoems() {
+  const query = document.getElementById("search").value.trim();
+  displayPoems(null, query);
+}
 
 function displayPoems(filterPoet = null) {
   const poems = JSON.parse(localStorage.getItem("hindiPoems")) || [];
