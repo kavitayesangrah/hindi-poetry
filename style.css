@@ -72,3 +72,17 @@ button:hover {
 .poet-link:hover {
   background-color: #d1a3ff;
 }
+.title-link {
+  display: inline-block;
+  background-color: #ffebcc;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #d84315;
+  font-weight: bold;
+  cursor: pointer;
+}
+.title-link:hover {
+  background-color: #ffd699;
+}
