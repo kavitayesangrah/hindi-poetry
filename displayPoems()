@@ -1,0 +1,22 @@
+function displayPoems(filterPoet = null, searchQuery = "") {
+  const poems = JSON.parse(localStorage.getItem("hindiPoems")) || [];
+  const list = document.getElementById("poemList");
+  list.innerHTML = "";
+  
+  const filtered = poems.filter(p =>
+    (!filterPoet || p.poet === filterPoet) &&
+    (p.title.includes(searchQuery) || p.poem.includes(searchQuery))
+  );
+
+  filtered.forEach(entry => {
+    const card = document.createElement("div");
+    card.className = "poem-card";
+    card.innerHTML = `
+      <h3>✍️ ${entry.poet}</h3>
+      <h4>📖 ${entry.title}</h4>
+      <p>${entry.poem}</p>
+      <small style="color:gray;">🕒 ${entry.time}</small>
+    `;
+    list.appendChild(card);
+  });
+}
